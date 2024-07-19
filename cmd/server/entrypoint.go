@@ -20,6 +20,9 @@ func StartProxySvr(cliCtx *cli.Context) error {
 	if err := cfg.Check(); err != nil {
 		return err
 	}
+
+	fmt.Printf("ETH confirmation depth set to: %d\n", cfg.EigenDAConfig.EthConfirmationDepth)
+
 	ctx, ctxCancel := context.WithCancel(cliCtx.Context)
 	defer ctxCancel()
 
