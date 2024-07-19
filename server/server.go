@@ -37,7 +37,7 @@ const (
 type Server struct {
 	log        log.Logger
 	endpoint   string
-	router      *store.Router
+	router     *store.Router
 	m          metrics.Metricer
 	tls        *rpc.ServerTLSConfig
 	httpServer *http.Server
@@ -50,7 +50,7 @@ func NewServer(host string, port int, router *store.Router, log log.Logger, m me
 		m:        m,
 		log:      log,
 		endpoint: endpoint,
-		router:    router,
+		router:   router,
 		httpServer: &http.Server{
 			Addr:              endpoint,
 			ReadHeaderTimeout: 10 * time.Second,
@@ -271,7 +271,7 @@ func ReadCommitmentMode(r *http.Request) (commitments.CommitmentMode, error) {
 
 			default:
 				return commitments.SimpleCommitmentMode, fmt.Errorf("unknown commit byte prefix")
-	
+
 			}
 		}
 
