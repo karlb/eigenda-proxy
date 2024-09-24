@@ -10,7 +10,7 @@ import (
 	"github.com/Layr-Labs/eigenda-proxy/client"
 	"github.com/Layr-Labs/eigenda-proxy/e2e"
 	"github.com/Layr-Labs/eigenda-proxy/utils"
-	op_plasma "github.com/ethereum-optimism/optimism/op-plasma"
+	altda "github.com/ethereum-optimism/optimism/op-alt-da"
 	"github.com/stretchr/testify/require"
 )
 
@@ -28,7 +28,7 @@ func TestOptimismClientWithS3Backend(t *testing.T) {
 	ts, kill := e2e.CreateTestSuite(t, useMemory(), true)
 	defer kill()
 
-	daClient := op_plasma.NewDAClient(ts.Address(), false, true)
+	daClient := altda.NewDAClient(ts.Address(), false, true)
 
 	testPreimage := []byte(e2e.RandString(100))
 
@@ -52,7 +52,7 @@ func TestOptimismClientWithEigenDABackend(t *testing.T) {
 	ts, kill := e2e.CreateTestSuite(t, useMemory(), true)
 	defer kill()
 
-	daClient := op_plasma.NewDAClient(ts.Address(), false, false)
+	daClient := altda.NewDAClient(ts.Address(), false, false)
 
 	testPreimage := []byte(e2e.RandString(100))
 
